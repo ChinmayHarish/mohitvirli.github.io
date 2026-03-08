@@ -98,8 +98,8 @@ const Footer = () => {
   const getLinks = () => {
     return FOOTER_LINKS.map((link, i) => {
       return (
-        <group key={i} position={[i * (isMobile ? 1.1 : 2), 0, 0]}>
-          <FooterLinkItem link={link}/>
+        <group key={i} position={[i * (isMobile ? 0.6 : 2), 0, 0]}>
+          <FooterLinkItem link={link} />
         </group>
       );
     });
@@ -107,8 +107,8 @@ const Footer = () => {
 
   return (
     <group position={[0, -44, 18]} rotation={[-Math.PI / 2, 0, 0]} ref={groupRef}>
-      <group position={[isMobile ? -2.5 : -4, 0, 0]}>
-        { getLinks() }
+      <group position={[isMobile ? -1.5 : -4, 0, 0]}>
+        {getLinks()}
       </group>
     </group>
   );
