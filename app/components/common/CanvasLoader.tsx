@@ -9,15 +9,15 @@ import { isMobile } from "react-device-detect";
 
 import { useThemeStore } from "@stores";
 
-import AwwardsBadge from "./AwwardsBadge";
 import Preloader from "./Preloader";
 import ProgressLoader from "./ProgressLoader";
+import ScrollProgressBar from "./ScrollProgressBar";
 import { ScrollHint } from "./ScrollHint";
 import ThemeSwitcher from "./ThemeSwitcher";
 // import {Perf} from "r3f-perf"
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
-  const ref= useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const backgroundColor = useThemeStore((state) => state.theme.color);
   const { progress } = useProgress();
@@ -38,7 +38,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
         width: 'calc(100% - 2rem)',
         height: 'calc(100% - 2rem)',
       };
-      setCanvasStyle({ ...canvasStyle, ...borderStyle})
+      setCanvasStyle({ ...canvasStyle, ...borderStyle })
     }
   }, [isMobile]);
 
@@ -86,12 +86,12 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
 
             <Preload all />
           </Suspense>
-          <AdaptiveDpr pixelated/>
+          <AdaptiveDpr pixelated />
         </Canvas>
         <ProgressLoader progress={progress} />
       </div>
-      <AwwardsBadge />
       <ThemeSwitcher />
+      <ScrollProgressBar />
       <ScrollHint />
     </div>
   );

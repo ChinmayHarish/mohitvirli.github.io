@@ -35,10 +35,16 @@ const ThemeSwitcher = () => {
   }, [theme.color]);
 
   return (
-    <div className={`fixed ${positionClass}`} ref={themeSwitcherRef} style={{ opacity: 0, zIndex: 2 }}>
-      <div className="flex items-center justify-center gap-2">
-        <a className="hover:cursor-pointer" onClick={toggleTheme}>
-          <Image src="icons/night-mode.svg" width={24} height={24} alt="night mode" loading="lazy" />
+    <div className={`fixed ${positionClass} p-2 px-4 rounded-3xl backdrop-blur-md bg-white/10 shadow-lg border border-white/20`} ref={themeSwitcherRef} style={{ opacity: 0, zIndex: 2 }}>
+      <div className="flex items-center justify-center gap-5">
+        <a className="hover:cursor-pointer transition-transform hover:scale-110" onClick={toggleTheme} title="Toggle Theme" aria-label="Toggle dark and light mode">
+          <Image src="/icons/night-mode.svg" width={24} height={24} alt="Toggle Theme" loading="lazy" />
+        </a>
+        <a className="hover:cursor-pointer transition-transform hover:scale-110" href="mailto:chinmayharish03@gmail.com" title="Email Me" aria-label="Email Chinmay Harish">
+          <Image src="/icons/mail.svg" width={24} height={24} alt="Email" loading="lazy" style={{ filter: 'invert(1)' }} />
+        </a>
+        <a className="hover:cursor-pointer transition-transform hover:scale-110" href="tel:+919449124052" title="Call Me" aria-label="Call Chinmay Harish">
+          <Image src="/icons/phone.svg" width={22} height={22} alt="Phone" loading="lazy" style={{ filter: 'invert(1)' }} />
         </a>
       </div>
     </div>

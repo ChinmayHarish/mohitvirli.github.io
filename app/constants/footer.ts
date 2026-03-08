@@ -3,32 +3,38 @@ import { FooterLink } from "../types";
 export const FOOTER_LINKS: FooterLink[] = [
   {
     name: 'LinkedIn',
-    hoverText: 'Connect with me',
+    hoverText: 'Connect',
     icon: 'icons/linkedin.svg',
-    url: 'https://www.linkedin.com/in/mohit-virli-4780b6112/',
+    url: 'https://www.linkedin.com/in/chinmay-harish-03106t',
   },
   {
     name: 'GitHub',
-    hoverText: 'Open Sourcing',
+    hoverText: 'GitHub',
     icon: 'icons/github.svg',
-    url: 'https://github.com/mohitvirli',
-  },
-  {
-    name: 'Spotify',
-    hoverText: 'Curated playlists',
-    icon: 'icons/spotify.svg',
-    url: 'https://open.spotify.com/user/21hr4w2hzp4ceidewwsb4bxoy',
+    url: 'https://github.com/ChinmayHarish',
   },
   {
     name: 'Instagram',
-    hoverText: '@clevirli',
+    hoverText: '@chinmeh_',
     icon: 'icons/instagram.svg',
-    url: 'https://www.instagram.com/clevirli/',
+    url: 'https://www.instagram.com/chinmeh_/',
+  },
+  {
+    name: 'Email',
+    hoverText: 'Contact Me',
+    icon: 'icons/mail.svg',
+    url: 'mailto:chinmayharish03@gmail.com',
+  },
+  {
+    name: 'Phone',
+    hoverText: '9449124052',
+    icon: 'icons/phone.svg',
+    url: 'tel:+919449124052',
   },
   {
     name: 'Resume',
-    hoverText: 'Download',
+    hoverText: 'View Resume',
     icon: 'icons/file.svg',
-    url: './Mohit Virli - Resume.pdf',
+    url: 'https://drive.google.com/file/d/1Xw-ep554ZGDVOarTIYfrJN57vfbntnBN/view?usp=sharing',
   }
 ];

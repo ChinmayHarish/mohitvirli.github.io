@@ -14,12 +14,12 @@ const vercettiFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Mohit Virli ✌️",
-  description: "A frontend developer by profession, a creative at heart.",
-  keywords: "Mohit Virli, Frontend Engineer, React Developer, Three.js, Creative Developer, Web Development, Angular, JavaScript, TypeScript, Portfolio",
-  authors: [{ name: "Mohit Virli" }],
-  creator: "Mohit Virli",
-  publisher: "Mohit Virli",
+  title: "Chinmay Harish",
+  description: "A product manager by profession, a builder at heart.",
+  keywords: "Chinmay Harish, Product Manager, Builder, Tinkerer, Tech Portfolio",
+  authors: [{ name: "Chinmay Harish" }],
+  creator: "Chinmay Harish",
+  publisher: "Chinmay Harish",
   formatDetection: {
     email: false,
     address: false,
@@ -36,17 +36,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mohit Virli - Frontend Engineer",
-    description: "Frontend engineer by profession, creative at heart.",
-    url: "https://mohitvirli.github.io",
-    siteName: "Mohit Virli's Portfolio",
+    title: "Chinmay Harish - Product Manager",
+    description: "A product manager by profession, a builder at heart.",
+    url: "https://github.com/ChinmayHarish",
+    siteName: "Chinmay Harish's Portfolio",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohit Virli - Frontend Engineer",
-    description: "Frontend engineer by profession, creative at heart.",
+    title: "Chinmay Harish - Product Manager",
+    description: "A product manager by profession, a builder at heart.",
   },
   verification: {
     google: "GsRYY-ivL0F_VKkfs5KAeToliqz0gCrRAJKKmFkAxBA",
@@ -65,14 +65,31 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Chinmay Harish",
+      "jobTitle": "Product Manager",
+    }
+  };
+
   return (
-    <html lang="en" className="overscroll-y-none">
+    <html lang="en" className="overscroll-y-none" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${soriaFont.variable} ${vercettiFont.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         {children}
       </body>
-      <GoogleAnalytics gaId={'G-7WD4HM3XRE'}/>
+      <GoogleAnalytics gaId={'G-7WD4HM3XRE'} />
     </html>
   );
 }

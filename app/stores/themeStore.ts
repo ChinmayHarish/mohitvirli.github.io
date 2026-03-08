@@ -7,11 +7,20 @@ interface Theme {
 }
 
 const AvailableThemes: Theme[] = [{
-  type: 'light',
-  color: '#0690d4'
+  type: 'blue',
+  color: '#0690d4' // Original Blue (Default)
 }, {
-  type: 'dark',
-  color: '#111'
+  type: 'black',
+  color: '#000000' // AMOLED Deep Black
+}, {
+  type: 'orange',
+  color: '#F97316' // Sunset Orange
+}, {
+  type: 'violet',
+  color: '#7c3aed' // Cyber Violet (New Recommendation)
+}, {
+  type: 'rose',
+  color: '#e11d48' // Neon Rose (New Recommendation)
 }];
 
 interface ThemeStore {

@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Agent
+.agent/
+
+# Temp test files
+test-*.mjs
+resume_base.tex
+

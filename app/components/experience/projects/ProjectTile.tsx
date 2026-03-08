@@ -39,6 +39,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     if (!projectRef.current) return;
     hoverAnimRef.current?.kill();
 
+    // Children order: [0] mesh, [1] title, [2] dateGroup, [3] subtext, [4] button (if url exists)
     const [mesh, title, dateGroup, textBox, button] = projectRef.current.children;
 
     hoverAnimRef.current = gsap.timeline();
@@ -52,7 +53,6 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       }, 0)
       .to(title.position, { y: hovered ? 0.7 : -0.8 }, 0)
       .to(textBox.position, { y: hovered ? 0.7 : 0 }, 0)
-      // .to(textBox.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
       .to(textBox, { fillOpacity: hovered ? 1 : 0, duration: 0.4 }, 0)
       .to(dateGroup.position, { y: hovered ? 2.6 : 1.4 }, 0)
       .to(mesh.scale, { y: hovered ? 2 : 1 }, 0)
@@ -101,7 +101,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       <group ref={projectRef}>
         <mesh>
           <planeGeometry args={[4.2, 2, 1]} />
-          <meshBasicMaterial color="#FFF" transparent opacity={0.3}/>
+          <meshBasicMaterial color="#FFF" transparent opacity={0.3} />
           {/* <meshPhysicalMaterial transmission={1} roughness={0.3} /> */}
           <Edges color="black" lineWidth={1.5} />
         </mesh>
@@ -131,7 +131,6 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
           {...subtitleProps}
           maxWidth={3.8}
           position={[-1.9, 2.3, 0.1]}
-          // scale={[0, 0, 1]}
           fontSize={0.2}>
           {project.subtext}
         </Text>
