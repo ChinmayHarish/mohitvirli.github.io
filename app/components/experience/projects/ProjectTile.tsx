@@ -51,18 +51,19 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
         y: hovered ? 1.3 : 1,
         z: hovered ? 1.3 : 1,
       }, 0)
-      .to(title.position, { y: hovered ? 0.7 : -0.8 }, 0)
-      .to(textBox.position, { y: hovered ? 0.7 : 0 }, 0)
+      .to(title.position, { y: hovered ? 2.3 : 0.8 }, 0)
+      .to(textBox.position, { y: hovered ? -0.1 : -0.5 }, 0)
       .to(textBox, { fillOpacity: hovered ? 1 : 0, duration: 0.4 }, 0)
-      .to(dateGroup.position, { y: hovered ? 2.6 : 1.4 }, 0)
-      .to(mesh.scale, { y: hovered ? 2 : 1 }, 0)
+      .to((textBox as any).material, { opacity: hovered ? 1 : 0, duration: 0.4 }, 0)
+      .to(dateGroup.position, { y: hovered ? 2.9 : 1.4 }, 0)
+      .to(mesh.scale, { y: hovered ? 2.6 : 1 }, 0)
       .to((mesh as THREE.Mesh).material, { opacity: hovered ? 0.95 : 0.3 }, 0)
-      .to(mesh.position, { y: hovered ? 1 : 0 }, 0);
+      .to(mesh.position, { y: hovered ? 0.5 : 0 }, 0);
 
     if (project.url) {
       hoverAnimRef.current
         .to(button.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
-        .to(button.position, { z: hovered ? 0.3 : -1 }, 0);
+        .to(button.position, { y: hovered ? -1.5 : -0.6, z: hovered ? 0.3 : -1 }, 0);
     }
   }, [hovered]);
 
@@ -82,7 +83,16 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     }
   }, [isProjectSectionActive]);
 
-  const handleClick = (e: ThreeEvent<MouseEvent>) => {
+  const handleGroupClick = (e: ThreeEvent<MouseEvent>) => {
+    if (isMobile) {
+      e.stopPropagation();
+      setHovered((prev) => !prev);
+    } else {
+      onClick(); // Desktop relies on parent passing focus
+    }
+  };
+
+  const handleButtonClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
     if (!project.url) return;
     const button = e.eventObject;
@@ -95,7 +105,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     <group
       position={position}
       rotation={rotation}
-      onClick={onClick}
+      onClick={handleGroupClick}
       onPointerOver={() => !isMobile && isProjectSectionActive && setHovered(true)}
       onPointerOut={() => !isMobile && isProjectSectionActive && setHovered(false)}>
       <group ref={projectRef}>
@@ -107,11 +117,11 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
         </mesh>
         <Text
           {...titleProps}
-          position={[-1.9, -0.8, 0.101]}
+          position={[-1.9, 0.8, 0.101]}
           anchorX="left"
-          anchorY="bottom"
+          anchorY="top"
           maxWidth={4}
-          fontSize={0.8}>
+          fontSize={project.title.length > 15 ? 0.6 : 0.8}>
           {project.title}
         </Text>
         <group position={[-1.25, 1.4, 0.01]}>
@@ -130,7 +140,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
         <Text
           {...subtitleProps}
           maxWidth={3.8}
-          position={[-1.9, 2.3, 0.1]}
+          position={[-1.9, -0.5, 0.1]}
           fontSize={0.2}>
           {project.subtext}
         </Text>
@@ -138,7 +148,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
           <group
             position={[1.3, -0.6, -1]}
             scale={[0, 0, 1]}
-            onClick={handleClick}
+            onClick={handleButtonClick}
             onPointerOver={() => document.body.style.cursor = 'pointer'}
             onPointerOut={() => document.body.style.cursor = 'auto'}>
             <mesh>

@@ -46,4 +46,20 @@ export const PROJECTS: Project[] = [
     techStack: ['P5.js', 'React', 'CSS Gradients'],
     impact: 'Achievable retro immersion through high-fidelity UI/UX design.',
   },
+  {
+    title: 'Puma — Hungry For More',
+    date: 'Apr 2026',
+    subtext: 'A high-end immersive e-commerce experience with scroll-triggered animations and a premium brand aesthetic.',
+    url: 'https://puma-hungry-for-more.netlify.app/',
+    techStack: ['Shopify', 'GSAP', 'Framer Motion', 'Next.js'],
+    impact: 'Delivered a pixel-perfect, high-performance brand showcase with fluid interactions.',
+  },
+  {
+    title: 'Terminal Portfolio',
+    date: 'Mar 2026',
+    subtext: 'A unique, interactive retro terminal interface (TUI) deployed on the web. A vibe-coded project exploring terminal-based identities.',
+    url: 'https://chinmay-terminal-portfolio.netlify.app/',
+    techStack: ['React', 'Ink', 'Fly.io', 'Netlify'],
+    impact: 'Featured as a standout creative portfolio on design forums.',
+  },
 ];
