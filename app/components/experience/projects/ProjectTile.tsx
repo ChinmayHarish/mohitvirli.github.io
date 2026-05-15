@@ -54,7 +54,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       .to(title.position, { y: hovered ? 2.3 : 0.8 }, 0)
       .to(textBox.position, { y: hovered ? -0.1 : -0.5 }, 0)
       .to(textBox, { fillOpacity: hovered ? 1 : 0, duration: 0.4 }, 0)
-      .to((textBox as any).material, { opacity: hovered ? 1 : 0, duration: 0.4 }, 0)
+      .to((textBox as THREE.Mesh).material, { opacity: hovered ? 1 : 0, duration: 0.4 }, 0)
       .to(dateGroup.position, { y: hovered ? 2.9 : 1.4 }, 0)
       .to(mesh.scale, { y: hovered ? 2.6 : 1 }, 0)
       .to((mesh as THREE.Mesh).material, { opacity: hovered ? 0.95 : 0.3 }, 0)
