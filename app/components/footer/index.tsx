@@ -1,4 +1,4 @@
-import { Svg, Text, useCursor, useScroll } from "@react-three/drei";
+import { Html, Svg, Text, useCursor, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
@@ -6,13 +6,36 @@ import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { FOOTER_LINKS } from "../../constants";
 import { FooterLink } from "../../types";
+import GitHubHeatmap from "../common/GitHubHeatmap";
 
 const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const textRef = useRef<THREE.Group>(null);
+  const heatmapTimeout = useRef<NodeJS.Timeout | null>(null);
   const [hovered, setHovered] = useState(false);
-  const onPointerOver = () => setHovered(true);
-  const onPointerOut = () => setHovered(false);
-  const onClick = () => window.open(link.url, '_blank');
+  const [showHeatmap, setShowHeatmap] = useState(false);
+
+  const isGithub = link.name === 'GitHub';
+
+  const onPointerOver = () => {
+    setHovered(true);
+    if (isGithub) {
+      if (heatmapTimeout.current) clearTimeout(heatmapTimeout.current);
+      setShowHeatmap(true);
+    }
+  };
+  const onPointerOut = () => {
+    setHovered(false);
+    if (isGithub) {
+      heatmapTimeout.current = setTimeout(() => {
+        setShowHeatmap(false);
+      }, 400);
+    }
+  };
+
+  const onClick = () => {
+    window.open(link.url, '_blank');
+  };
+
   const onPointerMove = (e: MouseEvent) => {
     if (isMobile) return;
     const hoverDiv = document.getElementById(`footer-link-${link.name}`);
@@ -73,14 +96,51 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
 
   useCursor(hovered);
 
+  // Add the heatmap node if this is the GitHub link
+  const heatmapNode = isGithub && (
+    <Html
+      position={[0, 1.5, 0]}
+      center
+      zIndexRange={[100, 0]}
+      style={{
+        pointerEvents: showHeatmap ? 'auto' : 'none',
+      }}
+    >
+      <div
+        onMouseEnter={() => {
+          if (heatmapTimeout.current) clearTimeout(heatmapTimeout.current);
+          setShowHeatmap(true);
+        }}
+        onMouseLeave={() => setShowHeatmap(false)}
+      >
+        <GitHubHeatmap isVisible={showHeatmap} />
+      </div>
+    </Html>
+  );
+
   if (isMobile) {
-    return <Svg onClick={onClick} scale={0.0015} position={[0.1, 0.25, 0]} src={link.icon} />;
+    return (
+      <group>
+        <Svg
+          onClick={onClick}
+          onPointerOver={onPointerOver}
+          onPointerOut={onPointerOut}
+          scale={0.0015}
+          position={[0.1, 0.25, 0]}
+          src={link.icon}
+        />
+        {heatmapNode}
+      </group>
+    );
   }
 
   return (
-    <Text ref={textRef} {...fontProps} >
-      {link.name.toUpperCase()}
-    </Text>
+    <group>
+      <Text ref={textRef} {...fontProps} >
+        {link.name.toUpperCase()}
+      </Text>
+      {heatmapNode}
+    </group>
   )
 }
 

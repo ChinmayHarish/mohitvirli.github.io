@@ -11,6 +11,8 @@ import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
 import TextWindow from "./TextWindow";
 
+import { isMobile } from 'react-device-detect';
+
 const Hero = () => {
   const titleRef = useRef<THREE.Mesh>(null);
   const { progress } = useProgress();
@@ -20,22 +22,24 @@ const Hero = () => {
       gsap.fromTo(titleRef.current.position, {
         y: -10,
         duration: 1,
-        // delay: 1.5,
       }, {
         y: 0,
-        duration: 3
+        duration: 1.2,
+        delay: 0.2
       });
     }
   }, [progress]);
 
   const fontProps = {
     font: "./soria-font.ttf",
-    fontSize: 1.2,
+    fontSize: isMobile ? 0.8 : 1.2,
   };
 
   return (
     <>
-      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>Hi, I am Chinmay Harish</Text>
+      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>
+        Hi, I am Chinmay Harish
+      </Text>
       <StarsContainer />
       <CloudContainer />
       <group position={[0, -25, 5.69]}>

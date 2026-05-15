@@ -1,0 +1,13 @@
+app = "terminal-portfolio"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 2222
+
+  [[services.ports]]
+    port = 22
+    handlers = []

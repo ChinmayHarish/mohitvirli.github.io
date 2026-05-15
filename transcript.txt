@@ -1,0 +1,32 @@
+ So I finally made my first-person website, but it actually lives my terminal.
+ And in this video, I'm going to show you exactly how I made it so you can do it too.
+ And by the way, you don't have to know how to code.
+ My inspiration actually came from this post by Zach,
+ but he didn't go into too much detail,
+ so I screen shot the post and sent it to Manus where it helped me come up with the plan.
+ After doing a bunch of research, the agent generated this document.
+ And the first step I need to do is to set up the code base,
+ installing all the dependencies, and also generating SSH-Hoskey.
+ And step two was to build the frontend.
+ Manus recommended Ink Collaborary,
+ which renders React components or command line interfaces.
+ I had this whole design, very, very beautiful in my Google Doc.
+ There's a portrait portion, which is an ASCII art
+ that I created using the ASCII image cover library using my graph photo.
+ And I also wanted a cool font for my name,
+ so I went to Figlet, which is a website with all these cool ASCII art fonts.
+ But that might be a mistake because I spent so much time trying to pick the perfect font
+ that eventually I had to delegate to you guys to pick it for me by posting this story.
+ Number four, one, buy a landslide.
+ So that's what I picked.
+ After hard part is done, I screenshot my design and gave all the assets to Cloudcode
+ and let it made the frontend.
+ I did a couple rounds of design adjustments on my local host before deploying it using Fly.io.
+ And then I connected the server to my own domain using DNS.
+ So now my site would appear when anyone SSH this command.
+ This is actually such a fun project to make
+ because I feel like we're surrounded by GUI,
+ where TUI, the terminal user interface, is pretty underexplored.
+ Whereas a limiting factor of the terminal was what made this creation possible.
+ Am I getting too philosophical?
+ You tell me, but definitely talk me if you make one.

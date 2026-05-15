@@ -1,0 +1,39 @@
+{
+  "name": "terminal-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "keygen": "tsx keygen.ts",
+    "server": "tsx server.ts",
+    "start": "tsx app/App.tsx",
+    "build": "tsc",
+    "serve": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "dotenv": "^17.3.1",
+    "figlet": "^1.11.0",
+    "gradient-string": "^3.0.0",
+    "ink": "^6.8.0",
+    "ink-gradient": "^4.0.0",
+    "react": "^19.2.4",
+    "ssh2": "^1.17.0",
+    "terminal-image": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/node": "^25.4.0",
+    "@types/react": "^19.2.14",
+    "@types/ssh2": "^1.15.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
